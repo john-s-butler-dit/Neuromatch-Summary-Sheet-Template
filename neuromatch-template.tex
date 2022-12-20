@@ -1,0 +1,50 @@
+\usepackage[default]{raleway}
+\usepackage{fontawesome}
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{lipsum}
+
+\usepackage{xcolor}
+\definecolor{customcolor}{HTML}{616AC5}
+\definecolor{subbox}{gray}{0.60}
+\definecolor{codecolor}{HTML}{FFC300}
+\colorlet{xx}{customcolor}
+%--------------------------------------------------------------------------------
+\usepackage{tcolorbox}
+
+\tcbuselibrary{most,listingsutf8,minted}
+
+\tcbset{tcbox width=auto,left=1mm,top=1mm,bottom=1mm,
+right=1mm,boxsep=1mm,middle=1pt}
+
+\newenvironment{mycolorbox}[2]{%
+\begin{tcolorbox}[grow to left by=-1em,grow to right by=-1em,capture=minipage,fonttitle=\large\bfseries, enhanced jigsaw,boxsep=1mm,colback=#1!30!white,on line,tcbox width=auto, toptitle=0mm,colframe=#2,opacityback=0.7,nobeforeafter,title=#2]%
+}{\end{tcolorbox}\\[0.2em]}
+
+\newenvironment{subbox}[2]{%
+\begin{tcolorbox}[capture=minipage,fonttitle=\normalsize\bfseries, enhanced jigsaw,boxsep=1mm,colback=#1!30!white,on line,tcbox width=auto,left=0.3em,top=1mm, toptitle=0mm,colframe=#1,opacityback=0.7,nobeforeafter,title=#2]\footnotesize %
+}{\normalsize\end{tcolorbox}\vspace{0.1em}}
+
+\newenvironment{multibox}[1]{%
+\begin{tcbraster}[raster columns=#1,raster equal height,nobeforeafter,raster column skip=1em,raster left skip=1em,raster right skip=1em]}{\end{tcbraster}}
+
+\newenvironment{textbox}[1]{\begin{mycolorbox}{customcolor}{#1}}{\end{mycolorbox}}
+
+%-------------------------------
+\newtcblisting{codebox}[2]{colback=codecolor!5,colframe=codecolor!80!black,listing only, 
+minted options={numbers=left,style=tcblatex,fontsize=\normalsize,breaklines,autogobble,linenos,numbersep=1mm},
+left=5mm,enhanced,
+title=#2, fonttitle=\bfseries,
+listing engine=minted,minted language=#1}
+
+%--------------------------------------------------------------------------------
+
+%--------------------------------------------------------------------------------
+
+\usepackage{multicol}
+\setlength{\columnsep}{30pt}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
